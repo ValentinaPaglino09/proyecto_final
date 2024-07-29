@@ -1,10 +1,12 @@
 import React from 'react'
-import style from './Comment.module.css'
 
-const Comment = () => {
+const ReviewComment = ({id, description, user}) => {
   return (
-    <div>Comment</div>
+    <div>
+      <h2>{user}</h2>
+      <p>{description}</p>
+    </div>
   )
 }
 
-export default Comment
+export default ReviewComment

@@ -1,0 +1,14 @@
+img {
+    width: 10em;
+    
+}
+
+.container {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 1em;
+}
+
+.container:hover {
+    cursor: pointer;
+}
