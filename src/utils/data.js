@@ -7,7 +7,7 @@ export const moviesArray= [
         duration: 120,
         avg_rating: 4.5,
         genre: "Comedy",
-        synopsis: 'bla bla bla',
+        synopsis: "In the irreverent spirit of fun that made The LEGO® Movie a worldwide phenomenon, the self-described leading man of that ensemble - LEGO Batman - stars in his own big-screen adventure. But there are big changes brewing in Gotham, and if he wants to save the city from The Joker's hostile takeover, Batman may have to drop the lone-vigilante thing, try to work with others and maybe, just maybe, learn to lighten up.",
         reviews: [
             {
                 id: 'a',
@@ -32,6 +32,7 @@ export const moviesArray= [
         duration: 120,
         avg_rating: 4.2,
         genre: "Action",
+        synopsis: 'Peter Parker, the beloved superhero Spider-Man, faces four destructive elemental monsters while on holiday in Europe. Soon, he receives help from Mysterio, a fellow hero with mysterious origins.',
         reviews: [
             {
                 id: 'a',
@@ -56,8 +57,9 @@ export const usersArray = [
         name: 'Pedro',
         lastName: 'Gomez',
         email: 'pedrog@mail.com',
-        password: '123',
         role: 'admin',
+        password: '123',
+        isBanned: false,
         reviews: [{
             id: 'a',
                 description: 'Great cast',

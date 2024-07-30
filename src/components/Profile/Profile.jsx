@@ -5,8 +5,10 @@ import Review from '../Review/Review'
 const Profile = () => {
 
  const userData = JSON.parse(sessionStorage.getItem('user'))
- const {name, profilePic, lastName, email, reviews} = userData
+ 
 
+ if (userData){
+  const {name, profilePic, lastName, email, reviews} = userData
   return (
     <div>
       <img src={profilePic} alt={`${name}'s profile picture`}></img>
@@ -18,7 +20,8 @@ const Profile = () => {
         ))
       }
     </div>
-  )
+  )}
+  else return (<div>Not Found</div>)
 }
 
 export default Profile

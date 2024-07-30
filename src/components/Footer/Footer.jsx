@@ -3,7 +3,9 @@ import style from './Footer.module.css'
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <nav>
+      <p> Hecho por ...</p>
+    </nav>
   )
 }
 

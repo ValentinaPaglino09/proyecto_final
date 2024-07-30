@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { postData } from '../../utils/fetchData'
 import { usersArray } from '../../utils/data'
 
-const Login = ({setCurrentUser}) => {
+const Login = () => {
   const navigate = useNavigate()
 
 const handleSubmit = async (e) => {
