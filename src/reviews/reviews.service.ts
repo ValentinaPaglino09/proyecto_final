@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateReviewDto } from './dto/create-review.dto';
 import { UpdateReviewDto } from './dto/update-review.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -27,16 +27,26 @@ export class ReviewsService {
   }
 
   async findOne(id: string) {
-    return await this.reviewRepository.findOne({
+    const review =  await this.reviewRepository.findOne({
       where: { id: id },
     });
+    if (!review) throw new BadRequestException(`The review ${id} doesn't exist.`)
+      return review
   }
 
   async update(id: string, updateReviewDto: UpdateReviewDto) {
+    const review =  await this.reviewRepository.findOne({
+      where: { id: id },
+    });
+    if (!review) throw new BadRequestException(`The review ${id} doesn't exist.`)
     return await this.reviewRepository.update({ id: id }, updateReviewDto);
   }
 
   async remove(id: string) {
-    return await this.reviewRepository.delete({ id: id});
+    const review =  await this.reviewRepository.findOne({
+      where: { id: id },
+    });
+    if (!review) throw new BadRequestException(`The review ${id} doesn't exist.`)
+     await this.reviewRepository.delete({ id: id});
   }
 }

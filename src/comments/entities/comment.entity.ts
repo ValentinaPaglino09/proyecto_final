@@ -1,6 +1,9 @@
-import { Column } from "typeorm";
+import { Column, PrimaryGeneratedColumn } from "typeorm";
 
 export class Comment {
+    
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
 
     @Column('text')
     content: string;

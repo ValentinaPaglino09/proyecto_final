@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { UpdateMovieDto } from './dto/update-movie.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -30,17 +30,27 @@ export class MoviesService {
   }
 
   async findOne(id: string) {
-    return await this.movieRepository.findOne({
+    const movie = await this.movieRepository.findOne({
       where: { id: id },
     });
+    if (!movie) throw new BadRequestException(`The movie ${id} doesn't exist.`)
+      return movie
   }
 
   async update(id: string, updateMovieDto: UpdateMovieDto) {
+    const movie = await this.movieRepository.findOne({
+      where: { id: id },
+    });
+    if (!movie) throw new BadRequestException(`The movie ${id} doesn't exist.`)
     return await this.movieRepository.update({ id:id }, updateMovieDto);
   }
 
   async remove(id: string) {
     //consultar si quizas es mejor el soft
-    return await this.movieRepository.delete({ id: id });
+    const movie = await this.movieRepository.findOne({
+      where: { id: id },
+    });
+    if (!movie) throw new BadRequestException(`The movie ${id} doesn't exist.`)
+     await this.movieRepository.delete({ id: id });
   }
 }
